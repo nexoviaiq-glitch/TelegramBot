@@ -257,7 +257,9 @@ def receive_order_text(message):
   state = user_states[chat_id]
   service_name = state["service"]
 
-  order_time = datetime.datetime.now().strftime("%Y-%m-%d | %I:%M %p")
+  import datetime
+# لتحويل وقت رسالة الزبون من نظام الكود التجريدي إلى التاريخ والوقت المحلي:
+order_time = datetime.datetime.fromtimestamp(message.date).strftime("%Y-%m-%d | %I:%M %p")
 
   # 1. إرسال رسالة تأكيد للزبون
   bot.reply_to(
