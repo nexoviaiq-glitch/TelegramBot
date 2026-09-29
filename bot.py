@@ -283,7 +283,7 @@ except Exception as e:
     print(f"خطأ في إرسال الإشعار للمشرف: {e}")
 
   # مسح الحالة بعد إتمام الطلب
-  user_states.pop(chat_id, None)
+user_states.pop(chat_id, None)
 
 
 print(
