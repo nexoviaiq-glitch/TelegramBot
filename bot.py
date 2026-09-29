@@ -277,9 +277,9 @@ admin_notification = (
       f"📝 تفاصيل الطلب (الباقة والرابط):\n{order_details}"
   )
 
-  try:
+try:
     bot.send_message(ADMIN_ID, admin_notification)
-  except Exception as e:
+except Exception as e:
     print(f"خطأ في إرسال الإشعار للمشرف: {e}")
 
   # مسح الحالة بعد إتمام الطلب
