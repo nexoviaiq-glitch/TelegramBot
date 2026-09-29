@@ -257,7 +257,7 @@ def receive_order_text(message):
   state = user_states[chat_id]
   service_name = state["service"]
 
-  import datetime
+import datetime
 # لتحويل وقت رسالة الزبون من نظام الكود التجريدي إلى التاريخ والوقت المحلي:
 order_time = (datetime.datetime.fromtimestamp(message.date) + datetime.timedelta(hours=3)).strftime("%Y-%m-%d | %I:%M %p")
 
