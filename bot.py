@@ -259,7 +259,7 @@ def receive_order_text(message):
 
   import datetime
 # لتحويل وقت رسالة الزبون من نظام الكود التجريدي إلى التاريخ والوقت المحلي:
-order_time = datetime.datetime.fromtimestamp(message.date).strftime("%Y-%m-%d | %I:%M %p")
+order_time = (datetime.datetime.fromtimestamp(message.date) + datetime.timedelta(hours=3)).strftime("%Y-%m-%d | %I:%M %p")
 
   # 1. إرسال رسالة تأكيد للزبون
   bot.reply_to(
