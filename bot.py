@@ -261,8 +261,8 @@ def receive_order_text(message):
 # لتحويل وقت رسالة الزبون من نظام الكود التجريدي إلى التاريخ والوقت المحلي:
 order_time = (datetime.datetime.fromtimestamp(message.date) + datetime.timedelta(hours=3)).strftime("%Y-%m-%d | %I:%M %p")
 
-  # 1. إرسال رسالة تأكيد للزبون
-  bot.reply_to(
+# 1. إرسال رسالة تأكيد للزبون
+bot.reply_to(
       message,
       "✅ تم ارسال طلبك بنجاح!\n\n- سيتم التواصل معك من قبل الدعم الفني أو"
       " المشرفين في أقرب وقت لتنفيذ طلبك.",
