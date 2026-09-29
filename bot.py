@@ -83,7 +83,7 @@ def handle_query(call):
     text = (
         "📸 أسعار متابعين انستغرام:\n\n"
         "▫️ 1,000 متابع = 3$\n"
-        "▫️ 5,000 متابع = 14$\n"
+        "▫️️ 5,000 متابع = 14$\n"
         "▫️ 10,000 متابع = 25$\n\n"
         "⚡ الضمان: تعويض في حال النقصان."
     )
@@ -221,10 +221,10 @@ def handle_query(call):
     else:
       prompt_text = (
           f"🎯 الخدمة المختارة: {selected_service}\n\n"
-          "✍️ **يرجى إرسال رسالة واحدة تحتوي على:**\n"
+          "✍️ يرجى إرسال رسالة واحدة تحتوي على:\n"
           "1️⃣ رقم الباقة أو العرض المطلوب\n"
           "2️⃣ رابط الفيديو أو المنشور (الريل)\n\n"
-          "*(مثال: عرض رقم 2 ورابط الفيديو...)*"
+          "(مثال: عرض رقم 2 ورابط الفيديو...)"
       )
 
     markup = telebot.types.InlineKeyboardMarkup()
@@ -257,19 +257,19 @@ def receive_order_text(message):
   state = user_states[chat_id]
   service_name = state["service"]
 
-import datetime
-# لتحويل وقت رسالة الزبون من نظام الكود التجريدي إلى التاريخ والوقت المحلي:
-order_time = (datetime.datetime.fromtimestamp(message.date) + datetime.timedelta(hours=3)).strftime("%Y-%m-%d | %I:%M %p")
+  import datetime
+  # لتحويل وقت رسالة الزبون وإضافة 3 ساعات لتوقيت العراق:
+  order_time = (datetime.datetime.fromtimestamp(message.date) + datetime.timedelta(hours=3)).strftime("%Y-%m-%d | %I:%M %p")
 
-# 1. إرسال رسالة تأكيد للزبون
-bot.reply_to(
+  # 1. إرسال رسالة تأكيد للزبون
+  bot.reply_to(
       message,
       "✅ تم ارسال طلبك بنجاح!\n\n- سيتم التواصل معك من قبل الدعم الفني أو"
       " المشرفين في أقرب وقت لتنفيذ طلبك.",
   )
 
   # 2. إرسال الطلب للمشرف بالتفاصيل الكاملة
-admin_notification = (
+  admin_notification = (
       f"🚨 اجاك طلب جديد!\n\n"
       f"👤 معلومات الزبون: {username_str}\n"
       f"📅 وقت الطلب: {order_time}\n"
@@ -277,13 +277,13 @@ admin_notification = (
       f"📝 تفاصيل الطلب (الباقة والرابط):\n{order_details}"
   )
 
-try:
+  try:
     bot.send_message(ADMIN_ID, admin_notification)
-except Exception as e:
+  except Exception as e:
     print(f"خطأ في إرسال الإشعار للمشرف: {e}")
 
   # مسح الحالة بعد إتمام الطلب
-user_states.pop(chat_id, None)
+  user_states.pop(chat_id, None)
 
 
 print(
