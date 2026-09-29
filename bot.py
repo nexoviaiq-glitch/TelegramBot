@@ -269,7 +269,7 @@ bot.reply_to(
   )
 
   # 2. إرسال الطلب للمشرف بالتفاصيل الكاملة
- admin_notification = (
+admin_notification = (
       f"🚨 اجاك طلب جديد!\n\n"
       f"👤 معلومات الزبون: {username_str}\n"
       f"📅 وقت الطلب: {order_time}\n"
